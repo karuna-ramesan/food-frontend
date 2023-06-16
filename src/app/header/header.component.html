@@ -1,0 +1,270 @@
+ <!-- Navigation-->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" routerLink="">
+          <i class="fa-solid fa-utensils"><b class="text-danger ms-3">FOOD FLY</b></i>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item">
+                    <!-- search item -->
+                    <input (keyup)="search($event)" style="width:400px" placeholder="Search food here...." type="text" class="form-control">
+                </li>
+
+            </ul>
+            <form class="d-flex">
+                <!-- wishlist -->
+                <a class="btn" routerLink="wishlist">
+                    <i class="fa-solid fa-heart text-danger fa-beat"></i>
+                    Wishlist
+                </a>
+                <!-- cart -->
+                <a class="btn" routerLink="cart">
+                    <i class="bi-cart-fill me-1"></i>
+                    <i class="fa-solid fa-cart-plus fa-flip"></i>
+                    Cart
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{cartitemcount}}</span>
+                </a>
+                <!-- login -->
+                <div *ngIf="!islogin" class="">
+                    <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"><i class="fa-solid fa-user"></i>
+
+                      Login
+                    </a>
+                    <!-- <ul class="dropdown-menu">
+                        <li>
+                          <a class="dropdown-item"
+                            ><i class="fa-solid fa-user-gear"></i> My Profile</a
+                          >
+                        </li>
+                        <li>
+                          <a class="dropdown-item" routerLink=""
+                            ><i class="fa-solid fa-truck-fast"></i> My Orders</a
+                          >
+                        </li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                          <a class="dropdown-item"
+                            ><i class="fa-solid fa-user-slash"></i> Logout</a
+                          >
+                        </li>
+                      </ul> -->
+                    </div>
+                    <div *ngIf="islogin" class="dropdown">
+                      <a class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"  >
+                        <i class="fa-solid fa-user"></i>
+
+                        {{name}}
+                      </a>
+                       <ul class="dropdown-menu">
+                       
+                        <li>
+                          <a class="dropdown-item" routerLink="checkout"
+                            ><i class="fa-solid fa-truck-fast"></i> My Orders</a
+                          >
+                        </li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                          <a (click)="logout()" class="dropdown-item"
+                            ><i class="fa-solid fa-user-slash "></i> Logout</a
+                          >
+                        </li>
+                      </ul>
+
+                      
+                    </div>
+
+
+
+
+
+
+
+              
+
+
+<!-- model -->
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-white" id="exampleModalToggleLabel">Login Form</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container px-lg-5">
+          <div class="row">
+            <div class="col-6">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2843/2843624.png"
+                alt="no image"
+                width="150px"
+              />
+            </div>
+            <div class="col-6 mt-5 text-danger fw-bolder">
+              Get access to your Orders, Wishlist and Recommendations
+            </div>
+          </div>
+        </div>
+        <!-- input -->
+        <div class="p-3">
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="form-floating mb-3 pt-3">
+               <!-- email -->
+            <input name="email" formControlName="email" class="form-control" type="text" placeholder="Enter email">
+            <label>Enter email</label>
+          </div>
+
+          <!-- email err msg -->
+
+          <div *ngIf="
+            this.loginForm.get('email')?.errors &&
+            this.loginForm.get('email')?.touched
+          " class="text-danger mb-2">Invalid email
+
+            </div>
+            
+
+            <!-- password -->
+            <div class="form-floating mb-3 pt-3">
+              <input name="password" formControlName="password" class="form-control" type="text" placeholder="Enter password">
+              <label >Enter password</label>
+              </div>
+              <!-- err msg -->
+
+              <div *ngIf="
+              this.loginForm.get('password')?.errors &&
+              this.loginForm.get('password')?.touched
+            " class="text-danger mb-2">Invalid password
+  
+
+            </div>
+            <!-- errormsg -->
+            <div class="mt-2 mb-2 text-danger fw-bolder">{{errorMsg}}</div>
+            <!-- login -->
+            <div class="mt-2">
+              <button type="submit" class="btn btn-danger">Login <span
+                *ngIf="successMsg"
+                class="spinner-border text-white"
+                role="status"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </span></button>
+            </div>
+
+            <div>
+              <span class="ms-3">New User ? Click here to 
+                <a
+                class="text-primary"
+                type="button" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+               
+                >Register</a
+              >
+
+              </span>
+            </div>
+           
+
+          </form>
+
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-white" id="exampleModalToggleLabel2">Register here</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <img style="width: 200px;" src="https://advising.dasa.ncsu.edu/wp-content/uploads/sites/11/2020/04/icon-website-self-registration.png" alt="">
+
+        </div>
+
+        <!-- register -->
+        <div class="p-3">
+          <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <!-- name -->
+
+            <div class="form-floating mb-3 pt-2">
+              <input name="username" formControlName="username" type="text" placeholder="Enter name" class="form-control" id="floatingName">
+            <label>Enter name</label>
+            </div>
+
+            <!-- username err msg -->
+            <div *ngIf="
+            this.registerForm.get('username')?.errors &&
+            this.registerForm.get('username')?.touched
+          " class="text-danger mb-2">Invalid name
+
+            </div>
+              
+           
+
+            <div class="form-floating mb-3 pt-2">
+              <input name="email" formControlName="email" type="text" placeholder="Enter email" class="form-control" id="floatingName">
+            <label>Enter email</label>
+            </div>
+            <!-- email err msg -->
+            <div *ngIf="
+            this.registerForm.get('email')?.errors &&
+            this.registerForm.get('email')?.touched
+          " class="text-danger mb-2">Invalid email
+
+            </div>
+
+<!-- password -->
+            <div class="form-floating mb-3 pt-2">
+              <input name="password" formControlName="password" type="text" placeholder="Enter password" class="form-control" id="floatingName">
+            <label>Enter password</label>
+            </div>
+            <!-- password err msg -->
+
+            <div *ngIf="
+            this.registerForm.get('password')?.errors &&
+            this.registerForm.get('password')?.touched
+          " class="text-danger mb-2">Invalid password
+
+            </div>
+            <!-- error msg -->
+            <div class="mt-2 mb-2 text-danger fw-bolder">{{errorMsg}}</div>
+             <!-- register button-->
+             <div class="mt-2">
+              <button type="submit" class="btn btn-danger">Register</button>
+            </div>
+            <div class="p-3">
+              <span class="ms-3">Existing User? 
+
+
+                <a
+                class="text-primary"
+                type="submit" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" 
+                
+                >log in</a></span>
+            </div>
+
+
+
+          </form>
+
+
+        </div>
+         
+
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+
+  
+  
+  

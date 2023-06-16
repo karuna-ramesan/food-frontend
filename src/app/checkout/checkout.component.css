@@ -1,0 +1,53 @@
+.product{
+    margin-left: 50px;
+    margin-top: 40px;
+
+}
+.delivered{
+    margin-left: 500px;
+    margin-top: 30px;
+}
+
+#box{
+    /* background: #000; */
+    box-shadow: 1px 1px 5px ;
+
+}
+.details{
+    cursor: pointer;
+    font-weight: bold;
+    color: #E75146;
+}
+.image{
+    background-image: url('https://www.pngplay.com/wp-content/uploads/7/Cart-Transparent-PNG.png'
+    );
+    background-repeat: no-repeat;
+    height: 500px;
+    width: 90%;
+    margin-left: 330px;
+    
+}
+.fa-solid.fa-location-dot{
+font-size: 30px;    
+}
+.fa-solid.fa-house{
+    font-size: 30px;      
+}
+.dotted-line {
+    border-left: 1px dotted black;
+    height: 50px;
+    margin: 0 auto;
+    width: 0;
+    margin-left: 12px;
+    margin-top: -15px;
+}
+.address{
+    margin-left: 57px;
+    margin-top: -17px;
+    font-size: small;
+    color: gray;
+}
+.home{
+    margin-left: 56px;
+    margin-top: -50px;
+}

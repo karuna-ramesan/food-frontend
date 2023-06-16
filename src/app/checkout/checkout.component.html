@@ -1,0 +1,92 @@
+<h1 class="container mt-3">MY ORDERS</h1>
+
+
+<div *ngIf="orders.length==0" class="image"></div>
+
+<div *ngIf="orders.length!=0" class="container p-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-1 justify-content-center">
+        <div  iv id="box" class="col mt-4" *ngFor="let order of orders">
+            <div class=" d-flex">
+                <div>
+                    <img style="width: 200px; padding-top: 20px;" [src]="order.image" alt="">
+                </div>
+                <div class="product">
+                    <p>{{order.title}}</p>
+                    <!-- <p>palce</p> -->
+                    <p>ORDER ID #{{order.id}}</p>
+                    <p (click)="getAddress()" class="details" view data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">VIEW DETAILS</p>
+                    <!-- ofcanvas view details -->
+                      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas-header">
+                          <h5 class="offcanvas-title mt-3" id="offcanvasExampleLabel"><span class="fw-bold">ORDER ID #{{order.id}}</span></h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                          <div>
+                            <p><i class="fa-solid fa-location-dot"></i><span class="ms-4">FOOD FLY</span></p>
+                            <p class="dotted-line"></p>
+                            <p><i class="fa-solid fa-house"></i></p>
+                            <p class="home">HOME</p>
+                            <p class="address">{{address}}</p>
+                          </div>
+                          <hr>
+                          <div>
+                            <p>Delivered in <span class="text-success fw-bold">28</span > min.</p>
+                            </div>
+                          <hr>
+                          <div>
+                            <p class="fs-small">ITEM</p>
+                            <div class="d-flex justify-content-between fw-bold">
+                            <p>{{order.item}} x 1</p>
+                            <p>₹{{total}}</p>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                            <p>Item Total</p>
+                            <p>₹{{total}}</p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                            <p>Delivery Fee</p>
+                            <p>₹45</p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                            <p>Govt Taxes & Other Charges</p>
+                            <p>₹12</p>
+                            </div>
+                            <div style="background-color: black; width:100%; height: 2px;"></div>
+                            <div class="d-flex justify-content-between py-3">
+                            <p class="fw-bolder">BILL TOTAL</p>
+                            <b>₹{{topay}}</b>
+                            </div>   
+                          </div>
+                        </div>
+                      </div>
+                      <!-- offcanvas end -->
+                </div>
+                <div class="delivered">
+                    <p>Delivered in <span class="text-success fw-bold">28</span > min.</p>
+                </div>
+            </div>
+            <div>
+                <p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            </div>
+            <div class="fw-bold" style="padding-bottom: 13px;">
+                TOTAL PAID : ₹{{topay}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ofcanvas view details -->
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{orders.item}}</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        name:{{orders.price}}
+      </div>
+    </div>
+  </div>

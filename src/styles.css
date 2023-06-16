@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@100&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(235, 188, 188);
+    overflow-x: hidden;
+}

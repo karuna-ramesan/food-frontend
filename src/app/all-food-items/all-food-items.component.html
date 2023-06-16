@@ -1,0 +1,83 @@
+ <!-- Header-->
+ <header id="head" class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <!-- <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Shop in style</h1>
+            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+        </div> -->
+        <!-- <div class="d-flex">
+            <div class="col-lg-6">
+                <h4>hi</h4>
+    
+            </div>
+    
+            <div class="col-lg-6"> -->
+               <!-- https://w7.pngwing.com/pngs/692/99/png-transparent-hamburger-street-food-seafood-fast-food-delicious-food-salmon-with-vegetables-salad-in-plate-leaf-vegetable-food-recipe-thumbnail.png -->
+
+               <section class="home" id="home">
+                <div class="home-text">
+
+                   <!-- <h1>{{name}}</h1>  -->
+
+                     <p *ngIf="isname" class="main-heading">Welcome <span class="text-danger">{{name}},</span></p>
+                    <h1>Meet,<span>Eat &</span><br> Enjoy the true<br> taste.....<br>
+                    <h2 class="para">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos hic autem natus veniam libero repudiandae alias inventore ipsum dolores illo unde rerum consectetur odit sed ipsa, nam deleniti quos minus.</h2></h1>
+                   
+                </div>
+                <div class="home-img">
+                    <img class="img1" src="https://www.pngmart.com/files/5/Indian-Food-PNG-Pic.png" alt="">
+                    
+
+                </div>
+
+               </section>
+    
+            </div>
+
+        <!-- </div> -->
+
+        
+    <!-- </div> -->
+</header>
+<!-- Section-->
+<section class="py-5" >
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" *ngFor="let product of products | filter : searchTerm:'title'">
+                <div class="card h-100">
+                    <!-- Product image-->
+                    <img height="150px" class="card-img-top" [src]="product.image" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="">
+                            <!-- Product name-->
+                            <div class="d-flex justify-content-center mt-2">
+                                <h5 class="fw-bolder text-danger">{{product.title}}</h5>
+
+                            </div>
+                             <!-- food type -->
+                             <div class="d-flex justify-content-between mt-3">
+                                <div class="fw-bolder">{{product.category}}</div><i class="fa-regular fa-star">{{product.rating.rate}}
+                                </i>
+                            </div>
+                           
+                            <!-- Product price-->
+                            <div class="mt-2">
+                           
+                               <b>${{product.rating.rate}}</b>
+                                
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-danger mt-auto" routerLink="view-food-item/{{product.id}}">View options</a></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
